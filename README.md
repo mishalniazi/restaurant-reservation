@@ -15,7 +15,7 @@ cd backend
 cp .env.example .env        # fill in your DB credentials & JWT_SECRET
 npm install
 node src/seed.js            # seed default users & tables
-npm run dev                 # starts on port 5000
+npm run dev                 # starts on port 3000
 ```
 
 Default accounts after seed:
@@ -29,7 +29,7 @@ Default accounts after seed:
 ```bash
 cd frontend
 npm install
-npm start                   # starts on port 3000
+npm start                   # starts on port 3001 (proxies API to 3000)
 ```
 
 ### 4. Tests
@@ -39,14 +39,23 @@ npm test
 ```
 
 ## API Endpoints
-| Method | Path | Auth |
-|--------|------|------|
-| POST | /api/auth/register | public |
-| POST | /api/auth/login | public |
-| GET | /api/tables/availability | public |
-| GET/POST | /api/tables | auth |
-| GET/POST | /api/reservations | auth |
-| PUT | /api/reservations/:id/status | staff/admin |
-| POST | /api/reservations/walkin | staff/admin |
-| GET/POST/DELETE | /api/waitlist | auth |
-| PUT | /api/waitlist/:id/notify | staff/admin |
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| POST | /api/auth/register | public | Register customer |
+| POST | /api/auth/login | public | Login |
+| GET | /api/tables/availability | public | Check available tables |
+| GET | /api/tables | auth | List all tables |
+| POST | /api/tables | admin | Add table |
+| PUT | /api/tables/:id | admin | Update table |
+| DELETE | /api/tables/:id | admin | Delete table |
+| GET | /api/reservations | auth | List reservations (search/filter/sort/paginate) |
+| POST | /api/reservations | auth | Create reservation |
+| POST | /api/reservations/walkin | staff/admin | Add walk-in |
+| GET | /api/reservations/:id | auth | Get reservation |
+| PUT | /api/reservations/:id | auth | Update reservation |
+| PUT | /api/reservations/:id/status | staff/admin | Update status |
+| DELETE | /api/reservations/:id | auth | Cancel reservation |
+| GET | /api/waitlist | auth | List waitlist entries |
+| POST | /api/waitlist | auth | Join waitlist |
+| PUT | /api/waitlist/:id/notify | staff/admin | Notify customer |
+| DELETE | /api/waitlist/:id | auth | Leave waitlist |
