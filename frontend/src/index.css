@@ -1,0 +1,31 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Georgia', serif; }
+
+body {
+  background: #0f0f0f;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* Global page wrapper for inner pages */
+.page-bg {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80') center/cover fixed;
+}
+
+.page-card {
+  background: rgba(255,255,255,0.96);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+input, select {
+  font-family: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
