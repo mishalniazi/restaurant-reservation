@@ -4,10 +4,10 @@ require('dotenv').config();
 
 let dataSourceOptions;
 
-if (process.env.DATABASE_URL) {
+if (process.env.DATABASE_PUBLIC_URL || process.env.DATABASE_URL) {
   dataSourceOptions = {
     type: 'postgres',
-    url: process.env.DATABASE_URL,
+    url: process.env.DATABASE_PUBLIC_URL || process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },
     synchronize: true,
     logging: false,
